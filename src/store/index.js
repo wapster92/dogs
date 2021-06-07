@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import allDogs from "@/store/allDogs";
+import dogs from "@/store/dogs";
 
 Vue.use(Vuex)
 
@@ -12,6 +12,6 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    allDogs
+    dogs
   }
 })

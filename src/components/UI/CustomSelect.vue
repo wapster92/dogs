@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      selected: 'change',
+      selected: this.default ? this.default : null,
       open: false,
     };
   },

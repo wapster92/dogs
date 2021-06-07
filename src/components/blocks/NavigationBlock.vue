@@ -2,7 +2,7 @@
   <nav class="navigation">
     <ul class="navigation__list">
       <li class="navigation__item" v-for="link of links" :key="link.label">
-        <router-link class="navigation__link" active-class="navigation__link--active" :to="link.path">{{ link.label }}
+        <router-link class="navigation__link" :to="link.path">{{ link.label }}
         </router-link>
       </li>
     </ul>
@@ -48,7 +48,7 @@ export default {
     color: #a2a2a2;
     font-weight: 600;
     border-radius: 3px;
-    &--active {
+    &.router-link-exact-active {
       background: #a9e067;
       color: #fff;
     }

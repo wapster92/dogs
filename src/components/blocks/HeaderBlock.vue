@@ -1,8 +1,9 @@
 <template>
   <header class="header">
     <div class="header__container container">
-      <NavigationBlock :links="[{path: '/', label: 'Home'}, {path: 'favorites', label: 'Favorites'}]" />
+      <NavigationBlock :links="[{path: '/', label: 'Home'}, {path: '/favorites', label: 'Favorites'}]" />
       <CustomSelect :options="options"
+                    :default="breed"
                     @change="breedChange"
                     class="header__select"
       />
@@ -35,7 +36,15 @@ export default {
     breedChange(val) {
       this.$router.push(`/breed/${val}`)
     }
-  }
+  },
+  computed: {
+    breed() {
+      if (this.$route.name === "Breed") {
+        return this.$route.params.id
+      }
+      return 'Change breed'
+    }
+  },
 }
 </script>
 
