@@ -18,7 +18,7 @@ const routes = [
     component: Favorites
   },
   {
-    path: '/breed',
+    path: '/breed/:id',
     name: 'Breed',
     component: Breed
   }

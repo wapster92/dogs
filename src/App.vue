@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <HeaderBlock />
-    <router-view></router-view>
+    <main class="main">
+      <div class="container">
+        <router-view></router-view>
+      </div>
+    </main>
   </div>
 </template>
 <script>
@@ -28,5 +32,8 @@ export default {
   max-width: 1200px;
   padding: 0 20px;
   margin: 0 auto;
+}
+.main {
+  padding: 0 0 40px;
 }
 </style>

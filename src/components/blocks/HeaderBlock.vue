@@ -2,9 +2,8 @@
   <header class="header">
     <div class="header__container container">
       <NavigationBlock :links="[{path: '/', label: 'Home'}, {path: 'favorites', label: 'Favorites'}]" />
-      <CustomSelect :options="['go', 'python', 'rust', 'javascript']"
-                    :default="''"
-                    v-model="select"
+      <CustomSelect :options="options"
+                    @change="breedChange"
                     class="header__select"
       />
     </div>
@@ -14,6 +13,7 @@
 <script>
 import NavigationBlock from "@/components/blocks/NavigationBlock";
 import CustomSelect from "@/components/UI/CustomSelect";
+import axios from "axios";
 
 export default {
   name: "HeaderBlock",
@@ -23,7 +23,17 @@ export default {
   },
   data() {
     return {
-      select: null
+      select: null,
+      options: [],
+    }
+  },
+  async mounted() {
+    const result = await axios.get('https://dog.ceo/api/breeds/list/all')
+    this.options = Object.keys(result.data.message)
+  },
+  methods: {
+    breedChange(val) {
+      this.$router.push(`/breed/${val}`)
     }
   }
 }

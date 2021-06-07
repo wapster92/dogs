@@ -1,5 +1,5 @@
 <template>
-  <div class="custom-select" :tabindex="tabindex" @blur="open = false">
+  <div class="custom-select" @blur="open = false">
     <div class="custom-select__selected" :class="{ 'custom-select__selected--open': open }" @click="open = !open">
       {{ selected }}
     </div>
@@ -7,6 +7,7 @@
       <div
         class="custom-select__wrap"
         v-for="(option, i) of options"
+        tabindex="0"
         :key="i"
         @click="changeItem(option)"
       >
@@ -36,11 +37,7 @@ export default {
   },
   data() {
     return {
-      selected: this.default
-        ? this.default
-        : this.options.length > 0
-          ? this.options[0]
-          : null,
+      selected: 'change',
       open: false,
     };
   },
@@ -51,7 +48,8 @@ export default {
     changeItem(option) {
       this.selected = option;
       this.open = false;
-      this.$emit('input', option);
+      this.$emit('input', option); // for v-model
+      this.$emit('change', option);
     }
   }
 };
@@ -91,7 +89,8 @@ export default {
   &__items {
     color: #666666;
     border-radius: 0 0 6px 6px;
-    overflow: hidden;
+    overflow: auto;
+    max-height: 400px;
     border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
