@@ -3,7 +3,7 @@
     <picture class="card-block__pic">
       <img class="card-block__img" :src="src" alt="">
     </picture>
-    <button class="card-block__favorite" :class="{'card-block__favorite--remove':favorite}">{{favorite ? 'Remove favorite' : 'Add favorite'}}</button>
+    <button class="card-block__favorite" :class="{'card-block__favorite--remove':favorite}">{{favorite ? 'Remove from favorites' : 'Add to favourites'}}</button>
   </div>
 </template>
 
