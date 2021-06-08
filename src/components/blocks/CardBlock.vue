@@ -1,5 +1,5 @@
 <template>
-  <div class="card-block" ref="card" @click="toggleFavorite(src)">
+  <div class="card-block" tabindex="0" ref="card" @click="toggleFavorite(src)">
     <picture class="card-block__pic">
       <img class="card-block__img" :src="src" alt="">
     </picture>
@@ -41,6 +41,11 @@ export default {
   height: 100%;
   overflow: hidden;
   position: relative;
+  &:hover, &:focus {
+    .card-block__favorite {
+      opacity: 1;
+    }
+  }
   &__favorite {
     position: absolute;
     bottom: 20px;
@@ -54,6 +59,8 @@ export default {
     font-weight: 500;
     padding: 12px 15px;
     border-radius: 5px;
+    opacity: 0;
+    transition: opacity .5s;
     &--remove {
       background: #ca4848;
     }
