@@ -1,33 +1,5 @@
 import axios from "axios";
-function unique(arr) {
-  return Array.from(new Set(arr));
-}
-const getDogs = async (items, page) => {
-  let max = 20;
-  let sum = 20 * page;
-  let count = Math.abs(sum - items.length);
-  max = count <= max ? count : max;
-  const result = await axios.get(`https://dog.ceo/api/breeds/image/random/${max}`);
-  items = unique(items.concat(result.data.message));
-  if(items.length < sum) {
-    return getDogs(items, page);
-  } else {
-    return items;
-  }
-}
-
-const moveDogs = (items, page) => {
-  let arr = [];
-  let max = 20;
-  let sum = 20 * page;
-  let count = items.length > sum ? sum : 0;
-  if(count <= 0) return items
-  max = count >= max ? count : max;
-  for(let i = 0; i < max; i++) {
-    arr.push(items[i]);
-  }
-  return arr;
-}
+import {moveDogs, getDogs} from '@/utils/helpers'
 
 export default {
   state:() => ({
@@ -52,9 +24,14 @@ export default {
       });
       if(idx >= 0) {
         state.favorites.splice(idx, 1);
+        localStorage.setItem('favorites', JSON.stringify(state.favorites))
       } else {
         state.favorites.push(payload);
+        localStorage.setItem('favorites', JSON.stringify(state.favorites))
       }
+    },
+    getLocalStorage(state) {
+      state.favorites = JSON.parse(localStorage.getItem('favorites')) || []
     },
   },
   actions: {

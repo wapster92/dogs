@@ -16,6 +16,9 @@ export default {
   name: 'App',
   components: {
     HeaderBlock
+  },
+  mounted() {
+    this.$store.commit('getLocalStorage')
   }
 }
 </script>
