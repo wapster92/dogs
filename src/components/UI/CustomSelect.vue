@@ -1,13 +1,12 @@
 <template>
-  <div class="custom-select" tabindex="0" @keydown.enter="open = !open" @blur="open = false">
+  <div class="custom-select" @blur="open = false">
     <div class="custom-select__selected" :class="{ 'custom-select__selected--open': open }" @click="open = !open">
       {{ selected }}
     </div>
-    <div class="custom-select__items" tabindex="1" :class="{ 'custom-select__items--hide': !open }">
+    <div class="custom-select__items" :class="{ 'custom-select__items--hide': !open }">
       <div
         class="custom-select__wrap"
         v-for="(option, i) of options"
-        tabindex="2"
         :key="i"
         @click="changeItem(option)"
       >
