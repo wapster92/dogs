@@ -64,6 +64,9 @@ export default {
     &--remove {
       background: #ca4848;
     }
+    &:hover, &:focus {
+      opacity: 1;
+    }
   }
   &__pic {
     display: flex;
