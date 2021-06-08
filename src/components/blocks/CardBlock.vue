@@ -1,5 +1,5 @@
 <template>
-  <div class="card-block" tabindex="0" ref="card" @click="toggleFavorite(src)">
+  <div class="card-block" tabindex="0" ref="card" @keydown.enter="toggleFavorite(src)" @click="toggleFavorite(src)">
     <picture class="card-block__pic">
       <img class="card-block__img" :src="src" alt="">
     </picture>
